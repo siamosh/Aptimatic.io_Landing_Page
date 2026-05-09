@@ -3,120 +3,621 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aptimatic - Smart Automation</title>
+    <title>Aptimatic — AI-Powered Automation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        *, *::before, *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
-            text-align: center;
         }
+
+        :root {
+            --bg-primary: #060610;
+            --bg-secondary: #0d0d1a;
+            --accent-1: #6c63ff;
+            --accent-2: #00d4ff;
+            --accent-3: #a855f7;
+            --glow-purple: rgba(108, 99, 255, 0.4);
+            --glow-cyan: rgba(0, 212, 255, 0.3);
+            --text-primary: #f0f0ff;
+            --text-muted: #8888aa;
+            --glass-bg: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ── CANVAS BG ── */
+        .bg-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .bg-canvas::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: -20%;
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(ellipse, rgba(108,99,255,0.18) 0%, transparent 70%);
+            animation: drift1 18s ease-in-out infinite alternate;
+        }
+        .bg-canvas::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            right: -10%;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(ellipse, rgba(0,212,255,0.12) 0%, transparent 70%);
+            animation: drift2 22s ease-in-out infinite alternate;
+        }
+        @keyframes drift1 {
+            from { transform: translate(0, 0) scale(1); }
+            to   { transform: translate(8%, 6%) scale(1.1); }
+        }
+        @keyframes drift2 {
+            from { transform: translate(0, 0) scale(1); }
+            to   { transform: translate(-6%, -8%) scale(1.08); }
+        }
+
+        /* Grid overlay */
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 48px;
+            background: rgba(6, 6, 16, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .nav-logo img {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+        }
+        .nav-logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 30%, var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px 22px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: opacity 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 20px var(--glow-purple);
+        }
+        .nav-cta:hover {
+            opacity: 0.88;
+            box-shadow: 0 0 36px var(--glow-purple);
+        }
+
+        /* ── HERO ── */
         .hero {
-            background-color: #007BFF;
-            color: white;
-            padding: 80px 20px;
             position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            padding: 160px 24px 100px;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            padding: 8px 18px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent-2);
+            letter-spacing: 0.04em;
+            margin-bottom: 32px;
+        }
+        .hero-badge .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent-2);
+            box-shadow: 0 0 8px var(--accent-2);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50%       { opacity: 0.5; transform: scale(0.8); }
         }
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
+            font-size: clamp(42px, 7vw, 86px);
+            font-weight: 900;
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+            max-width: 900px;
+            margin-bottom: 24px;
+        }
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 60%, var(--accent-3) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--text-muted);
+            max-width: 560px;
+            margin-bottom: 48px;
+            font-weight: 400;
         }
-        .cta-button {
-            background-color: #28a745;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            color: #fff;
             font-size: 16px;
+            font-weight: 600;
+            padding: 16px 36px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: all 0.25s;
+            box-shadow: 0 0 40px var(--glow-purple);
         }
-        .section {
-            padding: 60px 20px;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 60px var(--glow-purple), 0 8px 30px rgba(0,0,0,0.4);
         }
-        .section h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            font-size: 16px;
+            font-weight: 500;
+            padding: 16px 36px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: all 0.25s;
+            backdrop-filter: blur(8px);
         }
-        .footer {
-            background-color: #333;
-            color: white;
-            padding: 20px;
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-2px);
         }
-        .logo-container {
+
+        /* Scroll indicator */
+        .scroll-hint {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: white;
-            padding: 12px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            display: inline-block;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-muted);
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease 1.2s both;
         }
-        .logo {
-            width: 120px;
-            height: 120px;
-            display: block;
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--accent-1), transparent);
+            animation: scrollLine 2s ease-in-out infinite;
         }
-        .hero-content {
-            max-width: 800px;
+        @keyframes scrollLine {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50%       { opacity: 1; transform: scaleY(1.15); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translate(-50%, 16px); }
+            to   { opacity: 1; transform: translate(-50%, 0); }
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+            margin-bottom: 14px;
+        }
+        .section-title {
+            font-size: clamp(28px, 4vw, 46px);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin-bottom: 16px;
+        }
+        .section-sub {
+            font-size: 17px;
+            color: var(--text-muted);
+            max-width: 560px;
+            margin: 0 auto 60px;
+        }
+
+        /* ── WHY ── */
+        .why-section {
+            padding: 120px 24px;
+            text-align: center;
+            background: linear-gradient(180deg, transparent 0%, rgba(108,99,255,0.05) 50%, transparent 100%);
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            max-width: 1100px;
             margin: 0 auto;
         }
+        .why-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 36px 28px;
+            text-align: left;
+            transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+            backdrop-filter: blur(8px);
+        }
+        .why-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(108,99,255,0.3);
+            box-shadow: 0 0 40px rgba(108,99,255,0.1), 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(0,212,255,0.1));
+            border: 1px solid rgba(108,99,255,0.25);
+        }
+        .why-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .why-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ── BENEFITS ── */
+        .benefits-section {
+            padding: 120px 24px;
+            text-align: center;
+        }
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px 22px;
+            text-align: left;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+        .benefit-item:hover {
+            border-color: rgba(0,212,255,0.25);
+            box-shadow: 0 0 30px rgba(0,212,255,0.08);
+        }
+        .benefit-check {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            box-shadow: 0 0 14px var(--glow-cyan);
+            margin-top: 1px;
+        }
+        .benefit-item span {
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* ── CTA / COMING SOON ── */
+        .cta-section {
+            padding: 120px 24px 160px;
+            text-align: center;
+        }
+        .cta-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 64px 48px;
+            backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-1), var(--accent-2), transparent);
+        }
+        .cta-card .section-title {
+            margin-bottom: 12px;
+        }
+        .cta-card .section-sub {
+            margin-bottom: 40px;
+        }
+        .cta-card .btn-primary {
+            font-size: 17px;
+            padding: 18px 44px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid var(--glass-border);
+            padding: 32px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .footer-left img {
+            width: 26px;
+            height: 26px;
+            border-radius: 6px;
+            opacity: 0.8;
+        }
+        .footer-brand {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+        .footer-right a {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-right a:hover {
+            color: var(--accent-2);
+        }
+        .footer-copy {
+            font-size: 12px;
+            color: rgba(136,136,170,0.5);
+        }
+
+        /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
-            .logo-container {
-                top: 15px;
-                left: 15px;
-                padding: 8px;
-            }
-            .logo {
-                width: 80px;
-                height: 80px;
-            }
+            nav { padding: 16px 20px; }
+            .hero { padding: 140px 20px 80px; }
+            .why-section, .benefits-section, .cta-section { padding: 80px 20px; }
+            .cta-card { padding: 40px 24px; }
+            footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+            .footer-right { align-items: flex-start; }
         }
     </style>
 </head>
 <body>
 
+    <div class="bg-canvas"></div>
+    <div class="bg-grid"></div>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#" class="nav-logo">
+            <img src="images/aptimatic-logo.png" alt="Aptimatic">
+            <span class="nav-logo-text">Aptimatic</span>
+        </a>
+        <a href="#early-access" class="nav-cta">Get Early Access</a>
+    </nav>
+
+    <!-- HERO -->
     <div class="hero">
-        <div class="logo-container">
-            <img src="images/aptimatic-logo.png" alt="Aptimatic Logo" class="logo">
+        <div class="hero-badge">
+            <span class="dot"></span>
+            Now accepting early access applications
         </div>
-        <div class="hero-content">
-            <h1>Automate Everything. Focus on Anything.</h1>
-            <p>AI-powered automation that handles the busywork, so you can build what matters.</p>
-            <a href="#" class="cta-button">Join the Waitlist</a>
+        <h1>
+            Automate Everything.<br>
+            <span class="gradient-text">Focus on Anything.</span>
+        </h1>
+        <p>AI-powered automation that eliminates the busywork — so your team can spend time on what actually moves the needle.</p>
+        <div class="hero-buttons">
+            <a href="#early-access" class="btn-primary">
+                ✦ Join the Waitlist
+            </a>
+            <a href="#why" class="btn-secondary">
+                Learn more →
+            </a>
+        </div>
+        <div class="scroll-hint">
+            <div class="scroll-line"></div>
+            Scroll
         </div>
     </div>
 
-    <div class="section">
-        <h2>Why Aptimatic?</h2>
-        <p>We’re building a platform that empowers businesses to automate repetitive tasks and streamline operations effortlessly. Whether you're a small business or a growing enterprise, Aptimatic will help you unlock new levels of efficiency through smart, intuitive automation solutions.</p>
-    </div>
+    <!-- WHY APTIMATIC -->
+    <section class="why-section" id="why">
+        <div class="section-label">Why Aptimatic</div>
+        <h2 class="section-title">Built for the way modern teams work</h2>
+        <p class="section-sub">We're building a platform that lets businesses automate anything — without writing a single line of code.</p>
+        <div class="why-grid">
+            <div class="why-card">
+                <div class="card-icon">⚡</div>
+                <h3>Instant Automation</h3>
+                <p>Connect your tools and automate complex multi-step workflows in minutes, not months.</p>
+            </div>
+            <div class="why-card">
+                <div class="card-icon">🧠</div>
+                <h3>AI-Driven Intelligence</h3>
+                <p>Our AI learns your processes and suggests optimisations — continuously improving over time.</p>
+            </div>
+            <div class="why-card">
+                <div class="card-icon">🔗</div>
+                <h3>Works with Your Stack</h3>
+                <p>Seamlessly integrates with the tools you already use: Slack, Notion, HubSpot, and hundreds more.</p>
+            </div>
+            <div class="why-card">
+                <div class="card-icon">📈</div>
+                <h3>Scales With You</h3>
+                <p>From solo founders to enterprise teams, Aptimatic grows alongside your business without friction.</p>
+            </div>
+        </div>
+    </section>
 
-    <div class="section">
-        <h2>Key Benefits</h2>
-        <p>✅ Automate Repetitive Admin Tasks</p>
-        <p>✅ Boost Productivity Effortlessly</p>
-        <p>✅ Simple Integration with Existing Tools</p>
-        <p>✅ AI-Powered Insights for Better Decisions</p>
-    </div>
+    <!-- KEY BENEFITS -->
+    <section class="benefits-section" id="benefits">
+        <div class="section-label">Key Benefits</div>
+        <h2 class="section-title">Everything you need to move faster</h2>
+        <p class="section-sub">Stop spending hours on tasks that a machine can do in seconds.</p>
+        <div class="benefits-list">
+            <div class="benefit-item">
+                <div class="benefit-check">✓</div>
+                <span>Automate repetitive admin &amp; ops tasks</span>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-check">✓</div>
+                <span>Boost team productivity effortlessly</span>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-check">✓</div>
+                <span>Simple integration with existing tools</span>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-check">✓</div>
+                <span>AI-powered insights for smarter decisions</span>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-check">✓</div>
+                <span>No-code workflow builder</span>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-check">✓</div>
+                <span>Real-time monitoring &amp; alerts</span>
+            </div>
+        </div>
+    </section>
 
-    <div class="section">
-        <h2>Coming Soon</h2>
-        <p>We’re working hard behind the scenes to bring Aptimatic to life. Sign up to be the first to experience the future of smart automation!</p>
-        <a href="#" class="cta-button">Get Early Access</a>
-    </div>
+    <!-- EARLY ACCESS CTA -->
+    <section class="cta-section" id="early-access">
+        <div class="cta-card">
+            <div class="section-label">Coming Soon</div>
+            <h2 class="section-title">Be first in line.</h2>
+            <p class="section-sub">We're putting the finishing touches on Aptimatic. Sign up now to get early access and exclusive launch perks.</p>
+            <a href="mailto:support@aptimatic.io?subject=Early Access Request" class="btn-primary">
+                ✦ Get Early Access
+            </a>
+        </div>
+    </section>
 
-    <div class="footer">
-        <p>Contact: support@aptimatic.io</p>
-        <p>© 2025 Aptimatic. All rights reserved.</p>
-    </div>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-left">
+            <img src="images/aptimatic-logo.png" alt="Aptimatic">
+            <span class="footer-brand">Aptimatic</span>
+        </div>
+        <div class="footer-right">
+            <a href="mailto:support@aptimatic.io">support@aptimatic.io</a>
+            <span class="footer-copy">© 2025 Aptimatic. All rights reserved.</span>
+        </div>
+    </footer>
 
 </body>
 </html>
