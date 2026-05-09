@@ -100,23 +100,23 @@
         }
         .nav-logo-ring {
             position: relative;
-            width: 52px; height: 52px;
-            border-radius: 14px;
+            width: 40px; height: 40px;
+            border-radius: 10px;
             padding: 2px;
             background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
             animation: ringPulse 3s ease-in-out infinite;
             flex-shrink: 0;
         }
         @keyframes ringPulse {
-            0%, 100% { box-shadow: 0 0 12px var(--glow-purple), 0 0 28px rgba(0,212,255,0.2); }
-            50%       { box-shadow: 0 0 24px var(--glow-purple), 0 0 48px rgba(0,212,255,0.35); }
+            0%, 100% { box-shadow: 0 0 10px var(--glow-purple), 0 0 22px rgba(0,212,255,0.2); }
+            50%       { box-shadow: 0 0 20px var(--glow-purple), 0 0 40px rgba(0,212,255,0.35); }
         }
         .nav-logo-ring img {
             width: 100%; height: 100%;
-            border-radius: 12px;
+            border-radius: 8px;
             display: block;
-            object-fit: cover;
-            background: var(--bg-primary);
+            object-fit: contain;
+            background: transparent;
         }
         .nav-logo-text {
             font-size: 21px;
@@ -632,7 +632,7 @@
     <nav>
         <a href="#" class="nav-logo">
             <div class="nav-logo-ring">
-                <img src="images/aptimatic-logo.png" alt="Aptimatic">
+                <img src="images/aptimatic-logo-transparent.png" alt="Aptimatic">
             </div>
             <span class="nav-logo-text">Aptimatic</span>
         </a>
