@@ -95,17 +95,34 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             text-decoration: none;
         }
-        .nav-logo img {
-            width: 36px; height: 36px;
-            border-radius: 8px;
+        .nav-logo-ring {
+            position: relative;
+            width: 52px; height: 52px;
+            border-radius: 14px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
+            animation: ringPulse 3s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+        @keyframes ringPulse {
+            0%, 100% { box-shadow: 0 0 12px var(--glow-purple), 0 0 28px rgba(0,212,255,0.2); }
+            50%       { box-shadow: 0 0 24px var(--glow-purple), 0 0 48px rgba(0,212,255,0.35); }
+        }
+        .nav-logo-ring img {
+            width: 100%; height: 100%;
+            border-radius: 12px;
+            display: block;
+            object-fit: cover;
+            background: var(--bg-primary);
         }
         .nav-logo-text {
-            font-size: 20px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #fff 30%, var(--accent-2));
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #fff 20%, var(--accent-2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -614,7 +631,9 @@
     <!-- NAV -->
     <nav>
         <a href="#" class="nav-logo">
-            <img src="images/aptimatic-logo.png" alt="Aptimatic">
+            <div class="nav-logo-ring">
+                <img src="images/aptimatic-logo.png" alt="Aptimatic">
+            </div>
             <span class="nav-logo-text">Aptimatic</span>
         </a>
         <ul class="nav-links">
