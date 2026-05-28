@@ -1,22 +1,20 @@
-<svg viewBox="0 0 188 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 196 30" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="ig" x1="16" y1="2" x2="16" y2="30" gradientUnits="userSpaceOnUse">
+    <linearGradient id="ig" x1="16" y1="2" x2="16" y2="28" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#38BDF8"/>
       <stop offset="60%" stop-color="#2563EB"/>
       <stop offset="100%" stop-color="#1E3A8A"/>
     </linearGradient>
   </defs>
-  <!-- Icon -->
-  <line x1="16" y1="3" x2="2.5"  y2="29.5" stroke="url(#ig)" stroke-width="2.6" stroke-linecap="round"/>
-  <line x1="16" y1="3" x2="29.5" y2="29.5" stroke="url(#ig)" stroke-width="2.6" stroke-linecap="round"/>
-  <line x1="8.5" y1="20" x2="23.5" y2="20" stroke="url(#ig)" stroke-width="2.6" stroke-linecap="round"/>
-  <circle cx="16"   cy="3"    r="2.8" fill="url(#ig)"/>
-  <circle cx="2.5"  cy="29.5" r="2.8" fill="url(#ig)"/>
-  <circle cx="29.5" cy="29.5" r="2.8" fill="url(#ig)"/>
-  <circle cx="8.5"  cy="20"   r="2.8" fill="url(#ig)"/>
-  <circle cx="23.5" cy="20"   r="2.8" fill="url(#ig)"/>
-  <!-- Wordmark (dark text for light backgrounds) -->
-  <text x="40" y="24" font-family="Inter,-apple-system,BlinkMacSystemFont,sans-serif" font-size="22" font-weight="700" letter-spacing="-0.6" fill="#0F172A">Aptimat</text>
-  <text x="140.5" y="24" font-family="Inter,-apple-system,BlinkMacSystemFont,sans-serif" font-size="22" font-weight="700" letter-spacing="-0.6" font-style="italic" fill="#2563EB">i</text>
-  <text x="148" y="24" font-family="Inter,-apple-system,BlinkMacSystemFont,sans-serif" font-size="22" font-weight="700" letter-spacing="-0.6" fill="#0F172A">c</text>
+  <line x1="16" y1="2"  x2="2"  y2="28" stroke="url(#ig)" stroke-width="2.6" stroke-linecap="round"/>
+  <line x1="16" y1="2"  x2="30" y2="28" stroke="url(#ig)" stroke-width="2.6" stroke-linecap="round"/>
+  <line x1="9"  y1="15" x2="23" y2="15" stroke="url(#ig)" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="16" cy="2"  r="2.8" fill="url(#ig)"/>
+  <circle cx="2"  cy="28" r="2.8" fill="url(#ig)"/>
+  <circle cx="30" cy="28" r="2.8" fill="url(#ig)"/>
+  <circle cx="9"  cy="15" r="2.8" fill="url(#ig)"/>
+  <circle cx="23" cy="15" r="2.8" fill="url(#ig)"/>
+  <text x="40" y="23" font-family="Inter,-apple-system,BlinkMacSystemFont,sans-serif" font-size="21" font-weight="700" letter-spacing="-0.5" fill="#0F172A">Aptimat</text>
+  <text x="141" y="23" font-family="Inter,-apple-system,BlinkMacSystemFont,sans-serif" font-size="21" font-weight="700" letter-spacing="-0.5" font-style="italic" fill="#2563EB">i</text>
+  <text x="148.5" y="23" font-family="Inter,-apple-system,BlinkMacSystemFont,sans-serif" font-size="21" font-weight="700" letter-spacing="-0.5" fill="#0F172A">c</text>
 </svg>
