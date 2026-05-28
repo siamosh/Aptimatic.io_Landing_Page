@@ -99,33 +99,28 @@
             text-decoration: none;
         }
         .nav-logo-icon {
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            padding: 8px 20px;
-            border-radius: 100px;
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            box-shadow: 0 0 20px var(--glow-purple);
+            gap: 10px;
             flex-shrink: 0;
-            transition: box-shadow 0.25s, opacity 0.25s;
         }
-        .nav-logo:hover .nav-logo-icon {
-            box-shadow: 0 0 36px var(--glow-purple), 0 0 50px rgba(0,212,255,0.3);
-            opacity: 0.9;
+        .nav-logo-icon svg {
+            width: 36px;
+            height: 36px;
+            transition: filter 0.3s;
+            filter: drop-shadow(0 0 6px rgba(37,99,235,0.6));
         }
-        .nav-logo-icon img {
-            height: 40px;
-            width: auto;
-            display: block;
-            filter: brightness(0) invert(1);
+        .nav-logo:hover .nav-logo-icon svg {
+            filter: drop-shadow(0 0 10px rgba(37,99,235,0.9)) drop-shadow(0 0 20px rgba(96,165,250,0.5));
         }
-        .nav-logo-text {
-            font-size: 20px;
+        .nav-logo-wordmark {
+            font-size: 22px;
             font-weight: 800;
             letter-spacing: -0.03em;
-            background: linear-gradient(135deg, #ffffff 30%, var(--accent-2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #ffffff;
+        }
+        .nav-logo-wordmark .i-dot {
+            color: #3B82F6;
         }
         .nav-links {
             display: flex;
@@ -632,7 +627,23 @@
     <nav>
         <a href="#" class="nav-logo">
             <div class="nav-logo-icon">
-                <img src="images/aptimatic-logo-transparent.png" alt="Aptimatic">
+                <svg viewBox="0 0 60 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#60A5FA"/>
+                            <stop offset="100%" stop-color="#1D4ED8"/>
+                        </linearGradient>
+                    </defs>
+                    <line x1="30" y1="4" x2="6"  y2="50" stroke="url(#g1)" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="30" y1="4" x2="54" y2="50" stroke="url(#g1)" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="17" y1="32" x2="43" y2="32" stroke="url(#g1)" stroke-width="4" stroke-linecap="round"/>
+                    <circle cx="30" cy="4"  r="4.5" fill="url(#g1)"/>
+                    <circle cx="6"  cy="50" r="4.5" fill="url(#g1)"/>
+                    <circle cx="54" cy="50" r="4.5" fill="url(#g1)"/>
+                    <circle cx="17" cy="32" r="4.5" fill="url(#g1)"/>
+                    <circle cx="43" cy="32" r="4.5" fill="url(#g1)"/>
+                </svg>
+                <span class="nav-logo-wordmark">Apt<span class="i-dot">i</span>matic</span>
             </div>
         </a>
         <ul class="nav-links">
