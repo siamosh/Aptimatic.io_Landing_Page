@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aptimatic — AI Solutions for Small & Medium Businesses</title>
+    <link rel="icon" type="image/svg+xml" href="images/aptimatic-favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {
@@ -104,23 +105,25 @@
             gap: 10px;
             flex-shrink: 0;
         }
-        .nav-logo-icon svg {
-            width: 36px;
-            height: 36px;
+        .nav-logo-icon img {
+            width: 32px;
+            height: 32px;
+            display: block;
             transition: filter 0.3s;
-            filter: drop-shadow(0 0 6px rgba(37,99,235,0.6));
+            filter: drop-shadow(0 0 5px rgba(37,99,235,0.55));
         }
-        .nav-logo:hover .nav-logo-icon svg {
-            filter: drop-shadow(0 0 10px rgba(37,99,235,0.9)) drop-shadow(0 0 20px rgba(96,165,250,0.5));
+        .nav-logo:hover .nav-logo-icon img {
+            filter: drop-shadow(0 0 10px rgba(56,189,248,0.8)) drop-shadow(0 0 20px rgba(37,99,235,0.5));
         }
         .nav-logo-wordmark {
             font-size: 22px;
             font-weight: 800;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.04em;
             color: #ffffff;
         }
-        .nav-logo-wordmark .i-dot {
-            color: #3B82F6;
+        .nav-logo-wordmark .i-italic {
+            font-style: italic;
+            color: #38BDF8;
         }
         .nav-links {
             display: flex;
@@ -627,23 +630,8 @@
     <nav>
         <a href="#" class="nav-logo">
             <div class="nav-logo-icon">
-                <svg viewBox="0 0 60 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#60A5FA"/>
-                            <stop offset="100%" stop-color="#1D4ED8"/>
-                        </linearGradient>
-                    </defs>
-                    <line x1="30" y1="4" x2="6"  y2="50" stroke="url(#g1)" stroke-width="4" stroke-linecap="round"/>
-                    <line x1="30" y1="4" x2="54" y2="50" stroke="url(#g1)" stroke-width="4" stroke-linecap="round"/>
-                    <line x1="17" y1="32" x2="43" y2="32" stroke="url(#g1)" stroke-width="4" stroke-linecap="round"/>
-                    <circle cx="30" cy="4"  r="4.5" fill="url(#g1)"/>
-                    <circle cx="6"  cy="50" r="4.5" fill="url(#g1)"/>
-                    <circle cx="54" cy="50" r="4.5" fill="url(#g1)"/>
-                    <circle cx="17" cy="32" r="4.5" fill="url(#g1)"/>
-                    <circle cx="43" cy="32" r="4.5" fill="url(#g1)"/>
-                </svg>
-                <span class="nav-logo-wordmark">Apt<span class="i-dot">i</span>matic</span>
+                <img src="images/aptimatic-icon.svg" alt="Aptimatic icon">
+                <span class="nav-logo-wordmark">Aptimat<span class="i-italic">i</span>c</span>
             </div>
         </a>
         <ul class="nav-links">
