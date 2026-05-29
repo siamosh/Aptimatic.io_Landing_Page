@@ -364,6 +364,7 @@
             padding: 120px 24px;
         }
         .services-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 28px;
@@ -400,14 +401,7 @@
             box-shadow: 0 24px 60px rgba(0,0,0,0.4);
             border-color: rgba(255,255,255,0.12);
         }
-        .service-num {
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
+        .service-num { display: none; }
         .service-icon-wrap {
             width: 56px; height: 56px;
             border-radius: 16px;
@@ -718,14 +712,27 @@
         <div class="section-inner">
             <div class="section-header">
                 <div class="section-label">Our Services</div>
-                <h2 class="section-title">Three ways we accelerate your business</h2>
+                <h2 class="section-title">Four ways we accelerate your business</h2>
                 <p class="section-sub">We combine technical depth with business understanding to deliver outcomes that matter.</p>
             </div>
             <div class="services-grid">
 
-                <!-- Service 1 -->
+                <!-- Service 1: AI Application Service -->
+                <div class="service-card cyan">
+                    <div class="service-icon-wrap">🧠</div>
+                    <h3>AI Application Service</h3>
+                    <p>Not sure where AI fits in your business? Our consultants identify the highest-impact opportunities and build a clear, actionable roadmap to get you there fast.</p>
+                    <ul class="service-features">
+                        <li>AI readiness assessment</li>
+                        <li>Strategy & roadmap development</li>
+                        <li>Tool & vendor evaluation</li>
+                        <li>Team training & enablement</li>
+                        <li>Ongoing advisory support</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2: AI Application Development -->
                 <div class="service-card purple">
-                    <div class="service-num">Service 01</div>
                     <div class="service-icon-wrap">🤖</div>
                     <h3>AI Application Development</h3>
                     <p>We design and build custom AI-powered applications tailored to your exact business needs — from intelligent chatbots to automated workflows and data pipelines.</p>
@@ -738,24 +745,22 @@
                     </ul>
                 </div>
 
-                <!-- Service 2 -->
-                <div class="service-card cyan">
-                    <div class="service-num">Service 02</div>
-                    <div class="service-icon-wrap">🧠</div>
-                    <h3>AI Consulting</h3>
-                    <p>Not sure where AI fits in your business? Our consultants help you identify the highest-impact opportunities and build a clear roadmap to get there.</p>
+                <!-- Service 3: AI On-Demand Classes -->
+                <div class="service-card violet">
+                    <div class="service-icon-wrap">🎓</div>
+                    <h3>AI On-Demand Classes for Small Business</h3>
+                    <p>Practical, bite-sized AI training built specifically for small business owners and their teams — no technical background required. Learn at your own pace and start applying AI immediately.</p>
                     <ul class="service-features">
-                        <li>AI readiness assessment</li>
-                        <li>Strategy & roadmap development</li>
-                        <li>Tool & vendor evaluation</li>
-                        <li>Team training & enablement</li>
-                        <li>Ongoing advisory support</li>
+                        <li>Self-paced video lessons & workshops</li>
+                        <li>Real-world SMB use cases & exercises</li>
+                        <li>AI tools walkthroughs (ChatGPT, automations & more)</li>
+                        <li>Certificate of completion</li>
+                        <li>Live Q&A sessions with AI experts</li>
                     </ul>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="service-card violet">
-                    <div class="service-num">Service 03</div>
+                <!-- Service 4: Project Management & Services -->
+                <div class="service-card purple">
                     <div class="service-icon-wrap">📋</div>
                     <h3>Project Management & Services</h3>
                     <p>We manage the full delivery lifecycle — from planning and resourcing through to go-live and beyond — so projects land on time, on budget, and on target.</p>
