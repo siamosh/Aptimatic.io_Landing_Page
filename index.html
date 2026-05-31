@@ -405,28 +405,35 @@
             border-color: rgba(255,255,255,0.12);
         }
         .service-num { display: none; }
-        .service-icon-wrap {
-            width: 56px; height: 56px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            margin-bottom: 24px;
-            border: 1px solid;
+        .service-card-img-wrap {
+            margin: -40px -32px 28px -32px;
+            height: 210px;
+            overflow: hidden;
+            border-radius: 24px 24px 0 0;
+            position: relative;
         }
-        .service-card.purple .service-icon-wrap {
-            background: rgba(108,99,255,0.12);
-            border-color: rgba(108,99,255,0.3);
+        .service-card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: transform 0.5s ease;
         }
-        .service-card.cyan .service-icon-wrap {
-            background: rgba(0,212,255,0.1);
-            border-color: rgba(0,212,255,0.25);
+        .service-card:hover .service-card-img-wrap img {
+            transform: scale(1.04);
         }
-        .service-card.violet .service-icon-wrap {
-            background: rgba(168,85,247,0.1);
-            border-color: rgba(168,85,247,0.25);
+        .service-card-img-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(10,14,28,0.1) 0%,
+                rgba(10,14,28,0.55) 100%
+            );
         }
+        .service-icon-wrap { display: none; }
         .service-card h3 {
             font-size: 22px;
             font-weight: 800;
@@ -720,9 +727,11 @@
             </div>
             <div class="services-grid">
 
-                <!-- Service 1: AI Application Service -->
+                <!-- Service 1: AI Consulting -->
                 <div class="service-card cyan">
-                    <div class="service-icon-wrap">🧠</div>
+                    <div class="service-card-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=700&q=80" alt="AI Consulting">
+                    </div>
                     <h3>AI Consulting</h3>
                     <p>Not sure where AI fits in your business? Our consultants identify the highest-impact opportunities and build a clear, actionable roadmap to get you there fast.</p>
                     <ul class="service-features">
@@ -736,7 +745,9 @@
 
                 <!-- Service 2: AI Application Development -->
                 <div class="service-card purple">
-                    <div class="service-icon-wrap">🤖</div>
+                    <div class="service-card-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=700&q=80" alt="AI Application Development">
+                    </div>
                     <h3>AI Application Development</h3>
                     <p>We design and build custom AI-powered applications tailored to your exact business needs — from intelligent chatbots to automated workflows and data pipelines.</p>
                     <ul class="service-features">
@@ -750,7 +761,9 @@
 
                 <!-- Service 3: AI On-Demand Classes -->
                 <div class="service-card violet">
-                    <div class="service-icon-wrap">🎓</div>
+                    <div class="service-card-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80" alt="AI On-Demand Classes">
+                    </div>
                     <h3>AI On-Demand Classes for Small Business</h3>
                     <p>Practical, bite-sized AI training built specifically for small business owners and their teams — no technical background required. Learn at your own pace and start applying AI immediately.</p>
                     <ul class="service-features">
@@ -764,7 +777,9 @@
 
                 <!-- Service 4: Project Management & Services -->
                 <div class="service-card purple">
-                    <div class="service-icon-wrap">📋</div>
+                    <div class="service-card-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1542626991-cbc4e32524cc?auto=format&fit=crop&w=700&q=80" alt="Project Management">
+                    </div>
                     <h3>Project Management & Services</h3>
                     <p>We manage the full delivery lifecycle — from planning and resourcing through to go-live and beyond — so projects land on time, on budget, and on target.</p>
                     <ul class="service-features">
