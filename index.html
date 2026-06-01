@@ -102,31 +102,16 @@
             gap: 14px;
             text-decoration: none;
         }
-        .nav-logo-icon {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-shrink: 0;
-        }
-        .nav-logo-icon img {
-            width: 32px;
-            height: 32px;
+        .nav-logo-svg {
+            height: 34px;
+            width: auto;
             display: block;
+            flex-shrink: 0;
+            filter: drop-shadow(0 0 6px rgba(37,99,235,0.45));
             transition: filter 0.3s;
-            filter: drop-shadow(0 0 5px rgba(37,99,235,0.55));
         }
-        .nav-logo:hover .nav-logo-icon img {
-            filter: drop-shadow(0 0 10px rgba(56,189,248,0.8)) drop-shadow(0 0 20px rgba(37,99,235,0.5));
-        }
-        .nav-logo-wordmark {
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: -0.04em;
-            color: #ffffff;
-        }
-        .nav-logo-wordmark .i-italic {
-            font-style: italic;
-            color: #38BDF8;
+        .nav-logo:hover .nav-logo-svg {
+            filter: drop-shadow(0 0 12px rgba(56,189,248,0.7)) drop-shadow(0 0 24px rgba(37,99,235,0.4));
         }
         .nav-links {
             display: flex;
@@ -633,10 +618,27 @@
     <!-- NAV -->
     <nav>
         <a href="#" class="nav-logo">
-            <div class="nav-logo-icon">
-                <img src="images/aptimatic-icon.svg?v=4" alt="Aptimatic icon">
-                <span class="nav-logo-wordmark">Aptimat<span class="i-italic">i</span>c</span>
-            </div>
+            <svg class="nav-logo-svg" viewBox="0 0 204 40" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Aptimatic">
+              <defs>
+                <linearGradient id="nlg" x1="20" y1="2" x2="20" y2="38" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%"   stop-color="#60A5FA"/>
+                  <stop offset="55%"  stop-color="#2563EB"/>
+                  <stop offset="100%" stop-color="#1E3A8A"/>
+                </linearGradient>
+              </defs>
+              <line x1="20"   y1="2"  x2="3"    y2="38" stroke="url(#nlg)" stroke-width="3"   stroke-linecap="round"/>
+              <line x1="20"   y1="2"  x2="37"   y2="38" stroke="url(#nlg)" stroke-width="3"   stroke-linecap="round"/>
+              <line x1="10.5" y1="22" x2="29.5" y2="22" stroke="url(#nlg)" stroke-width="3"   stroke-linecap="round"/>
+              <circle cx="20"   cy="2"  r="3.2" fill="url(#nlg)"/>
+              <circle cx="3"    cy="38" r="3.2" fill="url(#nlg)"/>
+              <circle cx="37"   cy="38" r="3.2" fill="url(#nlg)"/>
+              <circle cx="10.5" cy="22" r="3.2" fill="url(#nlg)"/>
+              <circle cx="29.5" cy="22" r="3.2" fill="url(#nlg)"/>
+              <text x="52" y="30"
+                    font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif"
+                    font-size="27" font-weight="800" letter-spacing="-0.7"
+                    fill="white">Aptimat<tspan fill="#38BDF8" font-style="italic">i</tspan>c</text>
+            </svg>
         </a>
         <ul class="nav-links">
             <li><a href="#services">Services</a></li>
