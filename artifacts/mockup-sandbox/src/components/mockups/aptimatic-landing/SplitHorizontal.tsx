@@ -41,7 +41,7 @@ export function SplitHorizontal() {
           
           {/* Left: Text */}
           <div className="lg:w-1/2 z-10 flex flex-col items-start gap-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#6c63ff]/30 bg-[#6c63ff]/10 text-[#a855f7] font-mono-accent text-xs uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#6c63ff]/30 bg-[#6c63ff]/10 text-[#a855f7] font-mono-accent uppercase tracking-widest text-[19px]">
               <span className="w-2 h-2 rounded-full bg-[#00d4ff] animate-pulse"></span>
               AI Solutions for SMBs
             </div>
