@@ -22,8 +22,8 @@ export function SplitHorizontal() {
           </a>
           
           <div className="hidden md:flex items-center gap-8 font-mono-accent text-sm tracking-wide text-[#8888aa]">
-            <a href="#services" className="hover:text-white transition-colors">01. Services</a>
-            <a href="#process" className="hover:text-white transition-colors">02. How It Works</a>
+            <a href="#services" className="hover:text-white transition-colors">Services</a>
+            <a href="#process" className="hover:text-white transition-colors">How It Works</a>
             <a href="mailto:support@aptimatic.io" className="hover:text-[#00d4ff] transition-colors">03. Contact</a>
           </div>
 
@@ -35,7 +35,6 @@ export function SplitHorizontal() {
           </a>
         </div>
       </nav>
-
       {/* Hero Section */}
       <section className="relative pt-12 pb-24 lg:pt-0 lg:pb-0 lg:min-h-[calc(100vh-80px)] flex items-center">
         <div className="max-w-7xl mx-auto w-full px-6 flex flex-col lg:flex-row items-center gap-16">
@@ -99,7 +98,6 @@ export function SplitHorizontal() {
 
         </div>
       </section>
-
       {/* Services Section */}
       <section id="services" className="py-32 relative border-t border-[#8888aa]/10">
         <div className="max-w-7xl mx-auto px-6">
@@ -196,7 +194,6 @@ export function SplitHorizontal() {
           </div>
         </div>
       </section>
-
       {/* Process Section */}
       <section id="process" className="py-32 bg-[#060610]/50 relative">
         <div className="max-w-7xl mx-auto px-6">
@@ -244,7 +241,6 @@ export function SplitHorizontal() {
           </div>
         </div>
       </section>
-
       {/* CTA Section */}
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#6c63ff]/10"></div>
@@ -261,7 +257,6 @@ export function SplitHorizontal() {
           </a>
         </div>
       </section>
-
       {/* Footer */}
       <footer className="border-t border-[#8888aa]/10 py-12">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -282,7 +277,6 @@ export function SplitHorizontal() {
           </div>
         </div>
       </footer>
-
     </div>
   );
 }
