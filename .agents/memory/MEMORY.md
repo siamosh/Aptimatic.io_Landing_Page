@@ -1,0 +1,1 @@
+- [Aptimatic logo icon](aptimatic-logo.md) — SVG icon is a 4-node, 2-stroke circuit mark; awaiting brand SVG file for pixel-perfect embed.
