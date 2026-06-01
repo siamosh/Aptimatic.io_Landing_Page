@@ -104,7 +104,7 @@ export function SplitHorizontal() {
           
           <div className="mb-24 md:w-1/2">
             <h2 className="font-mono-accent text-[#6c63ff] mb-4 tracking-widest">OUR EXPERTISE</h2>
-            <h3 className="text-4xl md:text-5xl font-bold mb-6">Transforming operations through <span className="text-gradient">intelligent systems.</span></h3>
+            <h3 className="text-4xl md:text-5xl font-bold mb-6">Four ways we put <span className="text-gradient">AI to work for you.</span></h3>
           </div>
 
           <div className="flex flex-col gap-0">
@@ -119,7 +119,7 @@ export function SplitHorizontal() {
                 </div>
                 <h4 className="text-3xl font-bold">AI Consulting</h4>
                 <p className="text-[#8888aa] text-lg leading-relaxed">
-                  We evaluate your current processes and pinpoint exactly where AI can save time and drive revenue.
+                  Not sure where AI fits? We map your operations, find the highest-impact opportunities, and hand you a clear roadmap — no guesswork, no jargon.
                 </p>
                 <ul className="space-y-3 mt-2">
                   {['Readiness assessment', 'Strategy & roadmap', 'Tool evaluation', 'Team training'].map((item, i) => (
@@ -137,7 +137,7 @@ export function SplitHorizontal() {
                 </div>
                 <h4 className="text-3xl font-bold">AI App Development</h4>
                 <p className="text-[#8888aa] text-lg leading-relaxed">
-                  Custom-built AI tools integrated directly into your workflow. From smart chatbots to automated data pipelines.
+                  We build custom AI tools that plug into how you already work — from intelligent customer chatbots to fully automated back-office pipelines.
                 </p>
                 <ul className="space-y-3 mt-2">
                   {['Custom AI applications', 'Intelligent chatbots', 'Workflow automation', 'Data pipelines'].map((item, i) => (
@@ -161,7 +161,7 @@ export function SplitHorizontal() {
                 </div>
                 <h4 className="text-3xl font-bold">On-Demand Classes</h4>
                 <p className="text-[#8888aa] text-lg leading-relaxed">
-                  Empower your team with practical AI skills designed specifically for small business use cases.
+                  Practical AI training built for small business owners and their teams. Learn what's actually useful — not just what's trending.
                 </p>
                 <ul className="space-y-3 mt-2">
                   {['Self-paced training', 'SMB specific use cases', 'Live Q&A sessions', 'Resource libraries'].map((item, i) => (
@@ -179,7 +179,7 @@ export function SplitHorizontal() {
                 </div>
                 <h4 className="text-3xl font-bold">Project Management</h4>
                 <p className="text-[#8888aa] text-lg leading-relaxed">
-                  End-to-end delivery of your AI initiatives. We manage the complexity so you can focus on your business.
+                  We own the delivery from kickoff to launch. You stay focused on running your business while we handle the timelines, vendors, and complexity.
                 </p>
                 <ul className="space-y-3 mt-2">
                   {['End-to-end delivery', 'Agile methodologies', 'Post-launch support', 'Performance tracking'].map((item, i) => (
