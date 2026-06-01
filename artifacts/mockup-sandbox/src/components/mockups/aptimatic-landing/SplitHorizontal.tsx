@@ -11,11 +11,12 @@ export function SplitHorizontal() {
           <a href="#" className="flex items-center gap-2">
             <svg viewBox="0 0 204 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: "34px", display: "block" }}>
               <defs><linearGradient id="nlg2" x1="20" y1="2" x2="20" y2="38" gradientUnits="userSpaceOnUse"><stop offset="0%" stopColor="#60A5FA"/><stop offset="55%" stopColor="#2563EB"/><stop offset="100%" stopColor="#1E3A8A"/></linearGradient></defs>
-              <line x1="3" y1="38" x2="20" y2="2" stroke="url(#nlg2)" strokeWidth="3" strokeLinecap="round"/>
-              <line x1="20" y1="2" x2="37" y2="38" stroke="url(#nlg2)" strokeWidth="3" strokeLinecap="round"/>
-              <circle cx="3" cy="38" r="3.2" fill="url(#nlg2)"/>
-              <circle cx="20" cy="2" r="3.2" fill="url(#nlg2)"/>
-              <circle cx="37" cy="38" r="3.2" fill="url(#nlg2)"/>
+              <line x1="5" y1="37" x2="16" y2="4" stroke="url(#nlg2)" strokeWidth="3" strokeLinecap="round"/>
+              <line x1="23" y1="8" x2="37" y2="37" stroke="url(#nlg2)" strokeWidth="3" strokeLinecap="round"/>
+              <circle cx="5" cy="37" r="3.2" fill="url(#nlg2)"/>
+              <circle cx="16" cy="4" r="3.2" fill="url(#nlg2)"/>
+              <circle cx="23" cy="8" r="3.2" fill="url(#nlg2)"/>
+              <circle cx="37" cy="37" r="3.2" fill="url(#nlg2)"/>
               <text x="52" y="30" fontFamily="Inter,-apple-system,sans-serif" fontSize="27" fontWeight="800" letterSpacing="-0.7" fill="white">Aptimat<tspan fill="#38BDF8" fontStyle="italic">i</tspan>c</text>
             </svg>
           </a>
@@ -262,11 +263,12 @@ export function SplitHorizontal() {
           <div className="flex items-center gap-2 opacity-50 grayscale">
             <svg viewBox="0 0 204 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: "24px", display: "block" }}>
               <defs><linearGradient id="nlg3" x1="20" y1="2" x2="20" y2="38" gradientUnits="userSpaceOnUse"><stop offset="0%" stopColor="#60A5FA"/><stop offset="55%" stopColor="#2563EB"/><stop offset="100%" stopColor="#1E3A8A"/></linearGradient></defs>
-              <line x1="3" y1="38" x2="20" y2="2" stroke="url(#nlg3)" strokeWidth="3" strokeLinecap="round"/>
-              <line x1="20" y1="2" x2="37" y2="38" stroke="url(#nlg3)" strokeWidth="3" strokeLinecap="round"/>
-              <circle cx="3" cy="38" r="3.2" fill="url(#nlg3)"/>
-              <circle cx="20" cy="2" r="3.2" fill="url(#nlg3)"/>
-              <circle cx="37" cy="38" r="3.2" fill="url(#nlg3)"/>
+              <line x1="5" y1="37" x2="16" y2="4" stroke="url(#nlg3)" strokeWidth="3" strokeLinecap="round"/>
+              <line x1="23" y1="8" x2="37" y2="37" stroke="url(#nlg3)" strokeWidth="3" strokeLinecap="round"/>
+              <circle cx="5" cy="37" r="3.2" fill="url(#nlg3)"/>
+              <circle cx="16" cy="4" r="3.2" fill="url(#nlg3)"/>
+              <circle cx="23" cy="8" r="3.2" fill="url(#nlg3)"/>
+              <circle cx="37" cy="37" r="3.2" fill="url(#nlg3)"/>
               <text x="52" y="30" fontFamily="Inter,-apple-system,sans-serif" fontSize="27" fontWeight="800" letterSpacing="-0.7" fill="white">Aptimat<tspan fill="#38BDF8" fontStyle="italic">i</tspan>c</text>
             </svg>
           </div>
