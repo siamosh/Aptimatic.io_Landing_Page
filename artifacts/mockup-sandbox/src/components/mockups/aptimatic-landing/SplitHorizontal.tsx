@@ -198,7 +198,7 @@ export function SplitHorizontal() {
       <section id="process" className="py-32 bg-[#060610]/50 relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
-            <h2 className="font-mono-accent text-[#00d4ff] mb-4 tracking-widest">02. HOW IT WORKS</h2>
+            <h2 className="font-mono-accent text-[#00d4ff] mb-4 tracking-widest">HOW IT WORKS</h2>
             <h3 className="text-4xl md:text-5xl font-bold">A clear path to <span className="text-gradient">AI adoption.</span></h3>
           </div>
 
