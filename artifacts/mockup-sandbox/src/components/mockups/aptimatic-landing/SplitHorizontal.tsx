@@ -24,7 +24,7 @@ export function SplitHorizontal() {
           <div className="hidden md:flex items-center gap-8 font-mono-accent text-sm tracking-wide text-[#8888aa]">
             <a href="#services" className="hover:text-white transition-colors">Services</a>
             <a href="#process" className="hover:text-white transition-colors">How It Works</a>
-            <a href="mailto:support@aptimatic.io" className="hover:text-[#00d4ff] transition-colors">03. Contact</a>
+            <a href="mailto:support@aptimatic.io" className="hover:text-[#00d4ff] transition-colors">Contact</a>
           </div>
 
           <a 
