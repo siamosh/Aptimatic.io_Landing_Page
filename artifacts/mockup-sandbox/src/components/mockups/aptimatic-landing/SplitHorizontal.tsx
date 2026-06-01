@@ -103,7 +103,7 @@ export function SplitHorizontal() {
         <div className="max-w-7xl mx-auto px-6">
           
           <div className="mb-24 md:w-1/2">
-            <h2 className="font-mono-accent text-[#6c63ff] mb-4 tracking-widest">01. OUR EXPERTISE</h2>
+            <h2 className="font-mono-accent text-[#6c63ff] mb-4 tracking-widest">OUR EXPERTISE</h2>
             <h3 className="text-4xl md:text-5xl font-bold mb-6">Transforming operations through <span className="text-gradient">intelligent systems.</span></h3>
           </div>
 
