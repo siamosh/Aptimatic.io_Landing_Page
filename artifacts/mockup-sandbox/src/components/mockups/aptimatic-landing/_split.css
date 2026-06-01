@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+.split-theme {
+  --bg-navy: #060610;
+  --accent-purple: #6c63ff;
+  --accent-cyan: #00d4ff;
+  --accent-violet: #a855f7;
+  --text-main: #f0f0ff;
+  --text-muted: #8888aa;
+  
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-navy);
+  color: var(--text-main);
+}
+
+.font-mono-accent {
+  font-family: 'Space Mono', monospace;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-violet));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient-accent {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+}
+
+.border-gradient {
+  position: relative;
+  background: linear-gradient(var(--bg-navy), var(--bg-navy)) padding-box,
+              linear-gradient(135deg, var(--accent-purple), var(--accent-cyan)) border-box;
+  border: 1px solid transparent;
+}
+
+.glow-shadow {
+  box-shadow: 0 0 40px -10px rgba(108, 99, 255, 0.4);
+}
+
+.split-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(136, 136, 170, 0.2), transparent);
+  width: 100%;
+}
