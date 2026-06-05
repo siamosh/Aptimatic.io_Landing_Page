@@ -277,7 +277,7 @@
             gap: 8px;
         }
         .hero-status-value .check { color: var(--cyan); font-size: 18px; }
-        .hero-status-icon { color: var(--violet); opacity: .6; font-size: 28px; }
+        .hero-status-icon { display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
         /* ── SECTIONS ── */
         section { position: relative; }
@@ -859,7 +859,30 @@
                                 <span class="check">&#10003;</span> Optimised for Growth
                             </div>
                         </div>
-                        <span class="hero-status-icon">&#x1F9E0;</span>
+                        <span class="hero-status-icon">
+                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- outer ring pulse -->
+                                <circle cx="18" cy="18" r="17" stroke="#6c63ff" stroke-width="1" stroke-dasharray="3 4" opacity="0.4"/>
+                                <!-- spokes -->
+                                <line x1="18" y1="18" x2="6"  y2="8"  stroke="#00d4ff" stroke-width="1.2" opacity="0.55"/>
+                                <line x1="18" y1="18" x2="30" y2="8"  stroke="#00d4ff" stroke-width="1.2" opacity="0.55"/>
+                                <line x1="18" y1="18" x2="30" y2="28" stroke="#00d4ff" stroke-width="1.2" opacity="0.55"/>
+                                <line x1="18" y1="18" x2="6"  y2="28" stroke="#00d4ff" stroke-width="1.2" opacity="0.55"/>
+                                <line x1="18" y1="18" x2="18" y2="4"  stroke="#a855f7" stroke-width="1.2" opacity="0.55"/>
+                                <line x1="18" y1="18" x2="18" y2="32" stroke="#a855f7" stroke-width="1.2" opacity="0.55"/>
+                                <!-- outer nodes -->
+                                <circle cx="6"  cy="8"  r="2.2" fill="#6c63ff" opacity="0.9"/>
+                                <circle cx="30" cy="8"  r="2.2" fill="#6c63ff" opacity="0.9"/>
+                                <circle cx="30" cy="28" r="2.2" fill="#6c63ff" opacity="0.9"/>
+                                <circle cx="6"  cy="28" r="2.2" fill="#6c63ff" opacity="0.9"/>
+                                <circle cx="18" cy="4"  r="2"   fill="#a855f7" opacity="0.9"/>
+                                <circle cx="18" cy="32" r="2"   fill="#a855f7" opacity="0.9"/>
+                                <!-- centre node -->
+                                <circle cx="18" cy="18" r="5" fill="#00d4ff" opacity="0.15"/>
+                                <circle cx="18" cy="18" r="3.2" fill="#00d4ff"/>
+                                <circle cx="18" cy="18" r="1.4" fill="#060610"/>
+                            </svg>
+                        </span>
                     </div>
                 </div>
             </div>
