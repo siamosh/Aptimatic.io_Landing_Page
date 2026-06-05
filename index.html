@@ -505,6 +505,103 @@
         }
         .btn-cta:hover { background: var(--cyan); transform: scale(1.04); }
 
+        /* ── WHY APTIMATIC ── */
+        .why-section {
+            padding: 100px 0 110px;
+            position: relative;
+            border-top: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .why-section::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(108,99,255,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .why-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 48px;
+            position: relative;
+            z-index: 1;
+        }
+        .why-eyebrow {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--purple);
+            margin-bottom: 18px;
+        }
+        .why-heading {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+            max-width: 700px;
+        }
+        .why-lead {
+            font-size: 1.15rem;
+            color: var(--muted);
+            max-width: 680px;
+            line-height: 1.75;
+            margin-bottom: 64px;
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+        @media (max-width: 768px) {
+            .why-grid { grid-template-columns: 1fr; }
+            .why-inner { padding: 0 24px; }
+        }
+        .why-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px 32px;
+            transition: border-color 0.25s, background 0.25s;
+        }
+        .why-card:hover {
+            border-color: rgba(108,99,255,0.4);
+            background: rgba(108,99,255,0.04);
+        }
+        .why-card-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .why-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+        .why-card p {
+            font-size: 0.93rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+        .why-cta-row {
+            margin-top: 60px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .why-cta-text {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
         /* ── CONTACT FORM ── */
         .contact-section {
             padding: 100px 0 120px;
@@ -717,6 +814,7 @@
                 </svg>
             </a>
             <ul class="nav-links">
+                <li><a href="#why">Why Aptimatic</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#process">How It Works</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -768,6 +866,43 @@
 
         </div>
     </div>
+
+    <!-- WHY APTIMATIC -->
+    <section class="why-section" id="why">
+        <div class="why-inner">
+            <p class="why-eyebrow">Our Mission</p>
+            <h2 class="why-heading">AI is reshaping business.<br><span class="gradient-text">Are you ready to benefit?</span></h2>
+            <p class="why-lead">Since its public arrival just a few years ago, AI has begun transforming how companies operate, serve customers, and compete. But cutting through the hype to find real, practical value — especially without a large enterprise budget — is where most small and medium businesses get stuck. That's exactly the gap Aptimatic was built to close.</p>
+
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="why-card-icon">🌐</span>
+                    <h3>AI is no longer optional</h3>
+                    <p>The businesses adopting AI effectively today are building advantages that will be very hard to close tomorrow — in efficiency, customer experience, and cost structure. Waiting is a strategic risk.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-card-icon">⚡</span>
+                    <h3>SMBs can move faster than enterprises</h3>
+                    <p>Large companies face enormous infrastructure and change-management costs when rolling out AI. Small and medium businesses can adopt smartly and swiftly — without the overhead — and win.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-card-icon">🎯</span>
+                    <h3>Focus on your business, not the technology</h3>
+                    <p>You shouldn't need to become an AI expert to benefit from it. We handle the complexity — strategy, build, training, and delivery — so your team can stay focused on what you do best.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-card-icon">🤝</span>
+                    <h3>A partner, not just a vendor</h3>
+                    <p>We engage the way you need us to — consulting, hands-on application development, team training, or end-to-end project management. Just tell us what you need and we'll make it work for your business.</p>
+                </div>
+            </div>
+
+            <div class="why-cta-row">
+                <span class="why-cta-text">Ready to put AI to work for your business?</span>
+                <a href="#contact" class="btn-cta">Let's Talk &#8594;</a>
+            </div>
+        </div>
+    </section>
 
     <!-- SERVICES -->
     <section class="services-section" id="services">
@@ -980,6 +1115,7 @@
                 </svg>
             </div>
             <ul class="footer-links">
+                <li><a href="#why">Why Aptimatic</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#process">How It Works</a></li>
                 <li><a href="mailto:support@aptimatic.io">support@aptimatic.io</a></li>
