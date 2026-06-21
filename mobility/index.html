@@ -40,7 +40,18 @@
       <a href="/">Main Site</a>
       <a href="#contact" class="nav-cta">Schedule a Discussion</a>
     </nav>
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
   </header>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="#who">Who We Help</a>
+    <a href="#services">Services</a>
+    <a href="#sprint">Market Entry Sprint</a>
+    <a href="/">Main Site</a>
+    <a href="#contact" class="mobile-nav-cta">Schedule a Discussion</a>
+  </nav>
 
   <main>
 
@@ -382,6 +393,20 @@
     </div>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.querySelector('.menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    toggle.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }));
+  </script>
 </body>
 </html>
