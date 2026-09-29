@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Aptimatic — AI Solutions for Small & Medium Businesses</title>
+    <link rel="icon" type="image/svg+xml" href="images/aptimatic-favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:      #060610;
+            --bg2:     #0a0a1a;
+            --purple:  #6c63ff;
+            --cyan:    #00d4ff;
+            --violet:  #a855f7;
+            --text:    #f0f0ff;
+            --muted:   #8888aa;
+            --glass:   rgba(255,255,255,0.04);
+            --border:  rgba(136,136,170,0.12);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ── UTILS ── */
+        .mono { font-family: 'Space Mono', monospace; }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--cyan), var(--purple), var(--violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+        }
+
+        /* gradient border trick */
+        .border-grad {
+            background: linear-gradient(var(--bg), var(--bg)) padding-box,
+                        linear-gradient(135deg, var(--purple), var(--cyan)) border-box;
+            border: 1px solid transparent;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            background: rgba(6,6,16,0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo { text-decoration: none; display: flex; align-items: center; }
+        .nav-logo svg { height: 34px; display: block; filter: drop-shadow(0 0 6px rgba(37,99,235,.45)); transition: filter .3s; }
+        .nav-logo:hover svg { filter: drop-shadow(0 0 12px rgba(56,189,248,.7)) drop-shadow(0 0 24px rgba(37,99,235,.4)); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+        }
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(240,240,255,0.75);
+            text-decoration: none;
+            transition: color .2s;
+        }
+        .nav-links a:hover { color: var(--text); }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            color: var(--bg);
+            font-size: 14px;
+            font-weight: 700;
+            padding: 10px 24px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: background .25s, transform .25s;
+        }
+        .nav-cta:hover { background: var(--cyan); transform: scale(1.04); }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+        }
+        .hero-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 64px 24px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 64px;
+        }
+
+        /* left */
+        .hero-text { display: flex; flex-direction: column; gap: 32px; }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 100px;
+            border: 1px solid rgba(108,99,255,.3);
+            background: rgba(108,99,255,.08);
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--violet);
+            width: fit-content;
+        }
+        .hero-badge .dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--cyan);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%,100% { opacity:1; transform:scale(1); }
+            50%      { opacity:.5; transform:scale(.8); }
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 5.5vw, 72px);
+            font-weight: 900;
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-sub {
+            font-size: 18px;
+            color: var(--muted);
+            line-height: 1.75;
+            font-weight: 300;
+            max-width: 480px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            border-radius: 100px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            transition: all .3s;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 30px -5px rgba(0,212,255,.5);
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            border-radius: 100px;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            border: 1px solid rgba(136,136,170,.3);
+            background: transparent;
+            transition: all .3s;
+        }
+        .btn-outline:hover {
+            border-color: var(--purple);
+            background: rgba(108,99,255,.1);
+        }
+
+        /* right */
+        .hero-visual { position: relative; }
+        .hero-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(108,99,255,.2), rgba(0,212,255,.15), transparent 70%);
+            filter: blur(40px);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .hero-img-wrap {
+            position: relative;
+            z-index: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(136,136,170,.2);
+            box-shadow: 0 0 40px -10px rgba(108,99,255,.4);
+            aspect-ratio: 1 / 1;
+        }
+        .hero-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            mix-blend-mode: screen;
+            opacity: .8;
+            display: block;
+        }
+        .hero-img-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, var(--bg) 0%, transparent 50%);
+        }
+        .hero-status {
+            position: absolute;
+            bottom: 28px;
+            left: 24px;
+            right: 24px;
+            z-index: 2;
+            background: rgba(6,6,16,.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid transparent;
+            background-clip: padding-box;
+            border-image: linear-gradient(135deg, rgba(108,99,255,.5), rgba(0,212,255,.5)) 1;
+            padding: 18px 20px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .hero-status-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+        .hero-status-value {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hero-status-value .check { color: var(--cyan); font-size: 18px; }
+        .hero-status-icon { display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+        /* ── SECTIONS ── */
+        section { position: relative; }
+        .section-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+        /* ── SERVICES ── */
+        .services-section {
+            padding: 128px 0;
+            border-top: 1px solid var(--border);
+        }
+        .services-eyebrow {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--purple);
+            margin-bottom: 20px;
+        }
+        .services-heading {
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.15;
+            max-width: 540px;
+            margin-bottom: 96px;
+        }
+
+        /* alternating rows */
+        .service-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .service-row:last-child { border-bottom: none; }
+
+        .service-img {
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 16 / 10;
+            border: 1px solid rgba(136,136,170,.18);
+            transition: border-color .4s;
+        }
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: .6;
+            display: block;
+            transition: transform .7s ease, opacity .4s;
+        }
+        .service-row:hover .service-img img { transform: scale(1.05); opacity: .75; }
+
+        .service-row.row-1:hover .service-img { border-color: rgba(108,99,255,.5); }
+        .service-row.row-2:hover .service-img { border-color: rgba(0,212,255,.5); }
+        .service-row.row-3:hover .service-img { border-color: rgba(168,85,247,.5); }
+        .service-row.row-4:hover .service-img { border-color: rgba(255,255,255,.4); }
+
+        /* odd rows: img left, text right */
+        .service-row.odd .service-img  { order: 1; }
+        .service-row.odd .service-text { order: 2; padding-left: 24px; }
+        /* even rows: text left, img right */
+        .service-row.even .service-img  { order: 2; }
+        .service-row.even .service-text { order: 1; padding-right: 24px; }
+
+        .service-icon {
+            width: 60px; height: 60px;
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 26px;
+            margin-bottom: 24px;
+        }
+        .icon-purple { background: rgba(108,99,255,.12); border: 1px solid rgba(108,99,255,.3); }
+        .icon-cyan   { background: rgba(0,212,255,.1);   border: 1px solid rgba(0,212,255,.3); }
+        .icon-violet { background: rgba(168,85,247,.1);  border: 1px solid rgba(168,85,247,.3); }
+        .icon-white  { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); }
+
+        .service-text h3 {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+        .service-text p {
+            font-size: 16px;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 24px;
+        }
+        .feature-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--text);
+        }
+        .feature-list li .check-icon { font-size: 16px; flex-shrink: 0; }
+        .check-purple { color: var(--cyan); }
+        .check-cyan   { color: var(--purple); }
+        .check-violet { color: var(--violet); }
+        .check-white  { color: rgba(255,255,255,.7); }
+
+        /* ── PROCESS ── */
+        .process-section {
+            padding: 128px 0;
+            background: rgba(6,6,16,.5);
+        }
+        .process-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        .process-eyebrow {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 20px;
+        }
+        .process-heading {
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.15;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+        .step-card {
+            background: linear-gradient(var(--bg), var(--bg)) padding-box,
+                        linear-gradient(135deg, var(--purple), var(--cyan)) border-box;
+            border: 1px solid transparent;
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            transition: transform .3s;
+        }
+        .step-card:hover { transform: translateY(-6px); }
+
+        .step-bg-num {
+            position: absolute;
+            top: 20px; right: 24px;
+            font-family: 'Space Mono', monospace;
+            font-size: 60px;
+            font-weight: 700;
+            color: rgba(255,255,255,.04);
+            line-height: 1;
+            user-select: none;
+        }
+        .step-num {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+        .step-num-1 { background: var(--purple); color: #fff; box-shadow: 0 0 20px -5px var(--purple); }
+        .step-num-2 { background: var(--cyan);   color: var(--bg); box-shadow: 0 0 20px -5px var(--cyan); }
+        .step-num-3 { background: var(--violet); color: #fff; box-shadow: 0 0 20px -5px var(--violet); }
+        .step-num-4 { background: #fff; color: var(--bg); box-shadow: 0 0 20px -5px rgba(255,255,255,.5); }
+
+        .step-card h3 {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 14px;
+            letter-spacing: -0.02em;
+        }
+        .step-card p {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        /* ── CTA ── */
+        .cta-section { padding: 128px 0; position: relative; overflow: hidden; }
+        .cta-glow {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent, rgba(108,99,255,.1));
+            pointer-events: none;
+        }
+        .cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-inner h2 {
+            font-size: clamp(36px, 6vw, 72px);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.08;
+            margin-bottom: 28px;
+        }
+        .cta-inner p {
+            font-size: 18px;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 48px;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            color: var(--bg);
+            font-size: 18px;
+            font-weight: 700;
+            padding: 18px 44px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .btn-cta:hover { background: var(--cyan); transform: scale(1.04); }
+
+        /* ── WHY APTIMATIC ── */
+        .why-section {
+            padding: 100px 0 110px;
+            position: relative;
+            border-top: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .why-section::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(108,99,255,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .why-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 48px;
+            position: relative;
+            z-index: 1;
+        }
+        .why-eyebrow {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--purple);
+            margin-bottom: 18px;
+        }
+        .why-heading {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+            max-width: 700px;
+        }
+        .why-lead {
+            font-size: 1.15rem;
+            color: var(--muted);
+            max-width: 680px;
+            line-height: 1.75;
+            margin-bottom: 64px;
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+        @media (max-width: 768px) {
+            .why-grid { grid-template-columns: 1fr; }
+            .why-inner { padding: 0 24px; }
+        }
+        .why-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px 32px;
+            transition: border-color 0.25s, background 0.25s;
+        }
+        .why-card:hover {
+            border-color: rgba(108,99,255,0.4);
+            background: rgba(108,99,255,0.04);
+        }
+        .why-card-icon {
+            margin-bottom: 22px;
+            display: block;
+        }
+        .why-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+        .why-card p {
+            font-size: 0.93rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+        .why-cta-row {
+            margin-top: 60px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .why-cta-text {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ── CONTACT FORM ── */
+        .contact-section {
+            padding: 100px 0 120px;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid var(--border);
+        }
+        .contact-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+        .contact-eyebrow {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 16px;
+        }
+        .contact-header h2 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        .contact-header p {
+            font-size: 17px;
+            color: var(--muted);
+            margin-bottom: 52px;
+        }
+        .contact-header p a {
+            color: var(--cyan);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .contact-header p a:hover { text-decoration: underline; }
+        .contact-form {
+            background: rgba(255,255,255,.03);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 48px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+        .form-row .form-group { margin-bottom: 0; }
+        .form-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(240,240,255,.8);
+        }
+        .form-group label .required { color: var(--cyan); margin-left: 2px; }
+        .form-group label .optional {
+            font-weight: 400;
+            color: var(--muted);
+            font-size: 13px;
+        }
+        .form-group input,
+        .form-group textarea {
+            background: rgba(255,255,255,.05);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 15px;
+            color: var(--text);
+            outline: none;
+            transition: border-color .2s, box-shadow .2s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: var(--muted); opacity: .6; }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--purple);
+            box-shadow: 0 0 0 3px rgba(108,99,255,.18);
+        }
+        .form-group textarea { resize: vertical; min-height: 130px; }
+        .form-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 8px;
+        }
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--purple);
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 16px 40px;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+            transition: all .25s;
+        }
+        .btn-submit:hover { background: var(--cyan); color: var(--bg); transform: scale(1.03); }
+        .form-alt {
+            font-size: 14px;
+            color: var(--muted);
+        }
+        .form-alt a {
+            color: var(--cyan);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .form-alt a:hover { text-decoration: underline; }
+        @media (max-width: 640px) {
+            .form-row { grid-template-columns: 1fr; }
+            .contact-form { padding: 28px 20px; }
+            .form-footer { flex-direction: column; align-items: flex-start; }
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 24px;
+        }
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer-logo { display: flex; align-items: center; opacity: .45; filter: grayscale(1); }
+        .footer-logo svg { height: 24px; display: block; }
+        .footer-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        .footer-links a {
+            font-size: 13px;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color .2s;
+        }
+        .footer-links a:hover { color: var(--cyan); }
+        .footer-copy { font-size: 12px; color: rgba(136,136,170,.45); }
+
+        /* ── HAMBURGER ── */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            padding: 8px 10px;
+            flex-shrink: 0;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #f0f0ff;
+            border-radius: 2px;
+            transition: transform 0.25s, opacity 0.25s;
+        }
+        .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+        .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ── MOBILE NAV OVERLAY ── */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 98;
+            background: rgba(6, 6, 16, 0.97);
+            backdrop-filter: blur(16px);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 80px 24px 40px;
+            list-style: none;
+            margin: 0;
+        }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a {
+            display: block;
+            width: 100%;
+            max-width: 340px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--muted);
+            padding: 14px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: color 0.2s, background 0.2s;
+        }
+        .mobile-nav a:hover { color: #f0f0ff; background: rgba(255,255,255,0.05); }
+        .mobile-nav .mobile-nav-cta {
+            margin-top: 12px;
+            background: var(--purple);
+            color: #fff !important;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                padding-top: 56px;
+                padding-bottom: 56px;
+                gap: 48px;
+            }
+            .hero-visual { display: none; }
+            .hero h1 { font-size: clamp(36px, 9vw, 56px); }
+            .service-row {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                padding: 48px 0;
+            }
+            .service-row.odd  .service-img,
+            .service-row.even .service-img  { order: 1; }
+            .service-row.odd  .service-text,
+            .service-row.even .service-text { order: 2; padding: 0; }
+            .process-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .nav-cta { display: none; }
+            .menu-toggle { display: flex; }
+        }
+        @media (max-width: 600px) {
+            .services-heading { margin-bottom: 48px; }
+            .footer-links { flex-wrap: wrap; gap: 16px; }
+            .why-cta-row { flex-direction: column; align-items: flex-start; }
+            .contact-form { padding: 28px 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 215 40" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Aptimatic">
+                    <!-- Official icon mark: viewBox crops to node bounds with stroke padding -->
+                    <svg x="0" y="1" width="44" height="38" viewBox="7 14 110 95">
+                        <line x1="18" y1="96" x2="58" y2="26" stroke="#2563EB" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="40" y1="98" x2="72" y2="50" stroke="#22A6EE" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="72" y1="50" x2="102" y2="96" stroke="#22A6EE" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="18" cy="96" r="8" stroke="#2563EB" stroke-width="5" fill="#060610"/>
+                        <circle cx="58" cy="26" r="8" stroke="#2563EB" stroke-width="5" fill="#060610"/>
+                        <circle cx="72" cy="50" r="8" stroke="#22A6EE" stroke-width="5" fill="#060610"/>
+                        <circle cx="102" cy="96" r="8" stroke="#22A6EE" stroke-width="5" fill="#060610"/>
+                    </svg>
+                    <!-- Wordmark -->
+                    <text x="52" y="30"
+                          font-family="Plus Jakarta Sans, Inter, -apple-system, sans-serif"
+                          font-size="27" font-weight="800" letter-spacing="-0.7"
+                          fill="white">Aptimat<tspan fill="#22A6EE" font-style="italic">i</tspan>c</text>
+                </svg>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#why">Why Aptimatic</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">How It Works</a></li>
+                <li><a href="/mobility/" style="color:#22A6EE;">Mobility Advisory</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="nav-cta">Book Free Call &#8594;</a>
+            <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+        <a href="#why">Why Aptimatic</a>
+        <a href="#services">Services</a>
+        <a href="#process">How It Works</a>
+        <a href="/mobility/">Mobility Advisory</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="mobile-nav-cta">Book Free Call &rarr;</a>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-inner">
+
+            <!-- Left: text -->
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <span class="dot"></span>
+                    AI Solutions for SMBs
+                </div>
+
+                <h1>Scale Your Business<br>with <span class="gradient-text">Aptimatic.</span></h1>
+
+                <p class="hero-sub">We turn complex AI technology into practical, revenue-driving solutions for small and medium businesses. No jargon, just results.</p>
+
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">Book a Free Call</a>
+                    <a href="#services" class="btn-outline">Explore Services</a>
+                </div>
+            </div>
+
+            <!-- Right: visual -->
+            <div class="hero-visual">
+                <div class="hero-glow"></div>
+                <div class="hero-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80" alt="AI visualization">
+                    <div class="hero-img-overlay"></div>
+
+                    <!-- Floating status card -->
+                    <div class="hero-status">
+                        <div>
+                            <div class="hero-status-label">System Status</div>
+                            <div class="hero-status-value">
+                                <span class="check">&#10003;</span> Optimised for Growth
+                            </div>
+                        </div>
+                        <span class="hero-status-icon">
+                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- outer ring pulse -->
+                                <circle cx="18" cy="18" r="17" stroke="#6c63ff" stroke-width="1" stroke-dasharray="3 4" opacity="0.4"/>
+                                <!-- spokes -->
+                                <line x1="18" y1="18" x2="6"  y2="8"  stroke="#00d4ff" stroke-width="1.2" opacity="0.55"/>
+                                <line x1="18" y1="18" x2="30" y2="8"  stroke="#00d4ff" stroke-width="1.2" opacity="0.55"/>
+                                <line x1="18" y1="18" x2="30" y2="28" stroke="#00d4ff" stroke-width="1.2" opacity="0.55"/>
+                                <line x1="18" y1="18" x2="6"  y2="28" stroke="#00d4ff" stroke-width="1.2" opacity="0.55"/>
+                                <line x1="18" y1="18" x2="18" y2="4"  stroke="#a855f7" stroke-width="1.2" opacity="0.55"/>
+                                <line x1="18" y1="18" x2="18" y2="32" stroke="#a855f7" stroke-width="1.2" opacity="0.55"/>
+                                <!-- outer nodes -->
+                                <circle cx="6"  cy="8"  r="2.2" fill="#6c63ff" opacity="0.9"/>
+                                <circle cx="30" cy="8"  r="2.2" fill="#6c63ff" opacity="0.9"/>
+                                <circle cx="30" cy="28" r="2.2" fill="#6c63ff" opacity="0.9"/>
+                                <circle cx="6"  cy="28" r="2.2" fill="#6c63ff" opacity="0.9"/>
+                                <circle cx="18" cy="4"  r="2"   fill="#a855f7" opacity="0.9"/>
+                                <circle cx="18" cy="32" r="2"   fill="#a855f7" opacity="0.9"/>
+                                <!-- centre node -->
+                                <circle cx="18" cy="18" r="5" fill="#00d4ff" opacity="0.15"/>
+                                <circle cx="18" cy="18" r="3.2" fill="#00d4ff"/>
+                                <circle cx="18" cy="18" r="1.4" fill="#060610"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- WHY APTIMATIC -->
+    <section class="why-section" id="why">
+        <div class="why-inner">
+            <p class="why-eyebrow">Our Mission</p>
+            <h2 class="why-heading">AI is transforming business.<br><span class="gradient-text">Don't get left behind.</span></h2>
+            <p class="why-lead">Artificial intelligence has shifted from a future concept to a present-day competitive necessity — reshaping how companies operate, serve customers, manage their teams, and grow. The opportunity for businesses that adopt it strategically is significant. The risk for those that don't is equally real. The challenge isn't whether to embrace AI — it's how to do so effectively, without the hype, the waste, or an enterprise-scale budget. That's precisely why Aptimatic exists.</p>
+
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="why-card-icon">
+                        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="52" height="52" rx="14" fill="rgba(0,212,255,0.07)"/>
+                            <line x1="12" y1="40" x2="40" y2="40" stroke="#00d4ff" stroke-width="1" opacity="0.25"/>
+                            <line x1="12" y1="30" x2="40" y2="30" stroke="#00d4ff" stroke-width="1" opacity="0.25"/>
+                            <line x1="12" y1="20" x2="40" y2="20" stroke="#00d4ff" stroke-width="1" opacity="0.25"/>
+                            <polyline points="12,38 21,30 29,23 37,14" stroke="#00d4ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <circle cx="12" cy="38" r="3" fill="#00d4ff"/>
+                            <circle cx="21" cy="30" r="3" fill="#00d4ff" opacity="0.75"/>
+                            <circle cx="29" cy="23" r="3" fill="#00d4ff" opacity="0.75"/>
+                            <circle cx="37" cy="14" r="3" fill="#00d4ff"/>
+                            <polyline points="32,10 37,14 41,10" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                    </span>
+                    <h3>The window of opportunity is now</h3>
+                    <p>Businesses investing in AI today are building durable advantages in efficiency, customer experience, and operational capacity. Staying on the sideline is no longer a neutral decision — the gap between adopters and non-adopters widens every quarter.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-card-icon">
+                        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="52" height="52" rx="14" fill="rgba(168,85,247,0.07)"/>
+                            <path d="M26 10 C26 10, 36 17, 36 30 L26 37 L16 30 C16 17, 26 10, 26 10Z" stroke="#a855f7" stroke-width="1.8" fill="rgba(168,85,247,0.12)" stroke-linejoin="round"/>
+                            <circle cx="26" cy="24" r="3.5" stroke="#a855f7" stroke-width="1.5" fill="none"/>
+                            <path d="M16 30 L12 40 L20 34" stroke="#a855f7" stroke-width="1.5" fill="rgba(168,85,247,0.08)" stroke-linejoin="round"/>
+                            <path d="M36 30 L40 40 L32 34" stroke="#a855f7" stroke-width="1.5" fill="rgba(168,85,247,0.08)" stroke-linejoin="round"/>
+                            <path d="M22 37 Q26 44 30 37" stroke="#00d4ff" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    <h3>SMBs have a unique competitive edge</h3>
+                    <p>Large enterprises face steep infrastructure costs and slow change management when deploying AI at scale. Small and medium businesses can move smarter and faster — adopting the right tools at the right scale, without the overhead that holds larger organisations back.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-card-icon">
+                        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="52" height="52" rx="14" fill="rgba(0,212,255,0.07)"/>
+                            <path d="M26 10 L38 15 L38 27 C38 35 32 41 26 43 C20 41 14 35 14 27 L14 15 Z" stroke="#00d4ff" stroke-width="1.8" fill="rgba(0,212,255,0.07)" stroke-linejoin="round"/>
+                            <polyline points="20,27 25,32 33,21" stroke="#00d4ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                    </span>
+                    <h3>You shouldn't have to become an AI expert</h3>
+                    <p>Your focus belongs on running and growing your business — not navigating a rapidly evolving technology landscape. Aptimatic manages the complexity: strategy, solution design, development, and training. You get the benefits without the burden.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-card-icon">
+                        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="52" height="52" rx="14" fill="rgba(108,99,255,0.07)"/>
+                            <line x1="26" y1="17" x2="15" y2="35" stroke="#6c63ff" stroke-width="1.5" opacity="0.8"/>
+                            <line x1="26" y1="17" x2="37" y2="35" stroke="#6c63ff" stroke-width="1.5" opacity="0.8"/>
+                            <line x1="15" y1="35" x2="37" y2="35" stroke="#6c63ff" stroke-width="1.5" opacity="0.8"/>
+                            <circle cx="26" cy="17" r="5" fill="#6c63ff"/>
+                            <circle cx="15" cy="35" r="5" fill="#6c63ff"/>
+                            <circle cx="37" cy="35" r="5" fill="#6c63ff"/>
+                            <circle cx="26" cy="17" r="2.2" fill="#060610"/>
+                            <circle cx="15" cy="35" r="2.2" fill="#060610"/>
+                            <circle cx="37" cy="35" r="2.2" fill="#060610"/>
+                        </svg>
+                    </span>
+                    <h3>A true partner in your AI journey</h3>
+                    <p>We don't believe in one-size-fits-all engagements. Whether you need strategic advice, a custom-built AI application, hands-on team training, or full end-to-end project delivery — we work the way you need us to. Tell us your challenge and we'll meet you where you are.</p>
+                </div>
+            </div>
+
+            <div class="why-cta-row">
+                <span class="why-cta-text">Ready to put AI to work for your business?</span>
+                <a href="#contact" class="btn-cta">Let's Talk &#8594;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services-section" id="services">
+        <div class="section-inner">
+            <p class="services-eyebrow">Our Expertise</p>
+            <h2 class="services-heading">
+                Four ways we put<br>
+                <span class="gradient-text">AI to work for you.</span>
+            </h2>
+
+            <!-- Service 1: AI Consulting (odd → img left, text right) -->
+            <div class="service-row odd row-1">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80" alt="AI Consulting">
+                </div>
+                <div class="service-text">
+                    <div class="service-icon icon-purple">&#128200;</div>
+                    <h3>AI Consulting</h3>
+                    <p>Not sure where AI fits? We map your operations, find the highest-impact opportunities, and hand you a clear roadmap — no guesswork, no jargon.</p>
+                    <ul class="feature-list">
+                        <li><span class="check-icon check-purple">&#10003;</span> AI readiness assessment</li>
+                        <li><span class="check-icon check-purple">&#10003;</span> Strategy &amp; roadmap development</li>
+                        <li><span class="check-icon check-purple">&#10003;</span> Tool &amp; vendor evaluation</li>
+                        <li><span class="check-icon check-purple">&#10003;</span> Team training &amp; enablement</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service 2: AI App Dev (even → text left, img right) -->
+            <div class="service-row even row-2">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1000&q=80" alt="AI Application Development">
+                </div>
+                <div class="service-text">
+                    <div class="service-icon icon-cyan">&#128187;</div>
+                    <h3>AI Application Development</h3>
+                    <p>We build custom AI tools that plug into how you already work — from intelligent customer chatbots to fully automated back-office pipelines.</p>
+                    <ul class="feature-list">
+                        <li><span class="check-icon check-cyan">&#10003;</span> Custom AI &amp; ML solutions</li>
+                        <li><span class="check-icon check-cyan">&#10003;</span> Chatbots &amp; virtual assistants</li>
+                        <li><span class="check-icon check-cyan">&#10003;</span> Process automation tools</li>
+                        <li><span class="check-icon check-cyan">&#10003;</span> API integrations with your stack</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service 3: Classes (odd → img left, text right) -->
+            <div class="service-row odd row-3">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80" alt="AI On-Demand Classes">
+                </div>
+                <div class="service-text">
+                    <div class="service-icon icon-violet">&#127891;</div>
+                    <h3>AI On-Demand Classes for Small Business</h3>
+                    <p>Practical AI training built for small business owners and their teams. Learn what's actually useful — not just what's trending.</p>
+                    <ul class="feature-list">
+                        <li><span class="check-icon check-violet">&#10003;</span> Self-paced video lessons &amp; workshops</li>
+                        <li><span class="check-icon check-violet">&#10003;</span> Real-world SMB use cases</li>
+                        <li><span class="check-icon check-violet">&#10003;</span> Live Q&amp;A with AI experts</li>
+                        <li><span class="check-icon check-violet">&#10003;</span> Certificate of completion</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service 4: Project Mgmt (even → text left, img right) -->
+            <div class="service-row even row-4">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80" alt="Project Management">
+                </div>
+                <div class="service-text">
+                    <div class="service-icon icon-white">&#128203;</div>
+                    <h3>Project Management &amp; Services</h3>
+                    <p>We own the delivery from kickoff to launch. You stay focused on running your business while we handle the timelines, vendors, and complexity.</p>
+                    <ul class="feature-list">
+                        <li><span class="check-icon check-white">&#10003;</span> End-to-end project delivery</li>
+                        <li><span class="check-icon check-white">&#10003;</span> Agile &amp; structured methodologies</li>
+                        <li><span class="check-icon check-white">&#10003;</span> Risk &amp; issue management</li>
+                        <li><span class="check-icon check-white">&#10003;</span> Post-launch support &amp; optimisation</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="process-section" id="process">
+        <div class="section-inner">
+            <div class="process-header">
+                <p class="process-eyebrow">How It Works</p>
+                <h2 class="process-heading">A clear path to <span class="gradient-text">AI adoption.</span></h2>
+            </div>
+            <div class="process-grid">
+
+                <div class="step-card">
+                    <div class="step-bg-num">01</div>
+                    <div class="step-num step-num-1">1</div>
+                    <h3>Discovery Call</h3>
+                    <p>We learn about your business bottlenecks, data sources, and goals to identify high-ROI AI opportunities — free, 30 minutes, no commitment.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-bg-num">02</div>
+                    <div class="step-num step-num-2">2</div>
+                    <h3>Proposal &amp; Plan</h3>
+                    <p>You receive a clear, jargon-free roadmap detailing timelines, costs, and expected outcomes before any commitment is made.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-bg-num">03</div>
+                    <div class="step-num step-num-3">3</div>
+                    <h3>Build &amp; Deliver</h3>
+                    <p>Our team develops, trains, and integrates your custom AI solution with regular check-ins so you're always in the loop.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-bg-num">04</div>
+                    <div class="step-num step-num-4">4</div>
+                    <h3>Support &amp; Grow</h3>
+                    <p>Post-launch we monitor performance, provide team training, and scale your AI tools as your business grows.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-glow"></div>
+        <div class="cta-inner">
+            <h2>Ready to work <span class="gradient-text">smarter?</span></h2>
+            <p>Stop letting complexity slow your growth. Let's discuss how AI can transform your business today — no commitment required.</p>
+            <a href="#contact" class="btn-cta">Get in Touch &#8594;</a>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section class="contact-section" id="contact">
+        <div class="contact-inner">
+            <div class="contact-header">
+                <p class="contact-eyebrow">Contact Us</p>
+                <h2>Let's talk about <span class="gradient-text">your business.</span></h2>
+                <p>Fill out the form and we'll get back to you within one business day. Prefer email? Reach us directly at <a href="mailto:support@aptimatic.io">support@aptimatic.io</a></p>
+            </div>
+
+            <form class="contact-form" action="https://formsubmit.co/support@aptimatic.io" method="POST">
+                <!-- FormSubmit config -->
+                <input type="hidden" name="_subject" value="New Inquiry — Aptimatic.io">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_autoresponse" value="Thanks for reaching out to Aptimatic! We received your inquiry and will get back to you within one business day.">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="contact-name">Full Name <span class="required">*</span></label>
+                        <input type="text" id="contact-name" name="name" placeholder="Jane Smith" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="contact-email" name="email" placeholder="jane@company.com" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="contact-phone">Phone Number <span class="optional">(optional)</span></label>
+                        <input type="tel" id="contact-phone" name="phone" placeholder="+1 (555) 000-0000">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-company">Company <span class="optional">(optional)</span></label>
+                        <input type="text" id="contact-company" name="company" placeholder="Acme Inc.">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-message">Please explain briefly what your inquiry is about <span class="required">*</span></label>
+                    <textarea id="contact-message" name="message" placeholder="Tell us about your business, goals, or what you'd like help with..." required></textarea>
+                </div>
+
+                <div class="form-footer">
+                    <button type="submit" class="btn-submit">Send Inquiry &#8594;</button>
+                    <span class="form-alt">Or email us at <a href="mailto:support@aptimatic.io">support@aptimatic.io</a></span>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <svg viewBox="0 0 215 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Aptimatic">
+                    <svg x="0" y="1" width="44" height="38" viewBox="7 14 110 95">
+                        <line x1="18" y1="96" x2="58" y2="26" stroke="#2563EB" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="40" y1="98" x2="72" y2="50" stroke="#22A6EE" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="72" y1="50" x2="102" y2="96" stroke="#22A6EE" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="18" cy="96" r="8" stroke="#2563EB" stroke-width="5" fill="#060610"/>
+                        <circle cx="58" cy="26" r="8" stroke="#2563EB" stroke-width="5" fill="#060610"/>
+                        <circle cx="72" cy="50" r="8" stroke="#22A6EE" stroke-width="5" fill="#060610"/>
+                        <circle cx="102" cy="96" r="8" stroke="#22A6EE" stroke-width="5" fill="#060610"/>
+                    </svg>
+                    <text x="52" y="30"
+                          font-family="Plus Jakarta Sans, Inter, -apple-system, sans-serif"
+                          font-size="27" font-weight="800" letter-spacing="-0.7"
+                          fill="white">Aptimat<tspan fill="#22A6EE" font-style="italic">i</tspan>c</text>
+                </svg>
+            </div>
+            <ul class="footer-links">
+                <li><a href="#why">Why Aptimatic</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">How It Works</a></li>
+                <li><a href="/mobility/">Mobility Advisory</a></li>
+                <li><a href="mailto:support@aptimatic.io">support@aptimatic.io</a></li>
+            </ul>
+            <span class="footer-copy">&#169; 2025 Aptimatic. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script>
+        const toggle = document.querySelector('.menu-toggle');
+        const mobileNav = document.getElementById('mobile-nav');
+        toggle.addEventListener('click', () => {
+            const open = mobileNav.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', open);
+            document.body.style.overflow = open ? 'hidden' : '';
+        });
+        mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            mobileNav.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }));
+    </script>
+</body>
+</html>
