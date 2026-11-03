@@ -1,2 +1,3 @@
 - [Aptimatic logo icon](aptimatic-logo.md) — SVG icon is a 4-node, 2-stroke circuit mark; awaiting brand SVG file for pixel-perfect embed.
 - [FormSubmit email limitations](formsubmit-email.md) — automatic visitor replies require CAPTCHA; do not promise email delivery when CAPTCHA is disabled.
+- [GitHub preservation](github-preservation.md) — GitHub is the authoritative baseline; add handbook work without overwriting existing pages or functionality.
